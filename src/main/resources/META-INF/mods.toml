@@ -1,0 +1,13 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="All rights reserved"
+[[mods]]
+modId="atradseka"
+version="0.0.1"
+displayName="AdventureSekai Mod"
+logoFile="logo.png"
+credits="このmod遊んでくれてありがとう;;"
+authors="Mod制作ataRuka テクスチャNatuzakura"
+description='''
+ボス、アイテムなどを追加したりするmodです
+'''

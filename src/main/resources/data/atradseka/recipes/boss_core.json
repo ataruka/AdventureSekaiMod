@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DRD",
+    "RHR",
+    "DRD"
+  ],
+  "key": {
+    "H": {
+      "item": "atradseka:heated_core"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "D": {
+      "item": "minecraft:red_dye"
+    }
+  },
+  "result": {
+    "item": "atradseka:boss_core"
+  }
+}

@@ -1,0 +1,48 @@
+{
+    "itemGroup.atradseka": "Adventure Sekai Mod",
+
+    "key.category.adsekamod": "AdventureSekai(あどせか) Mod",
+    "key.adsekamod.modechange": "ModeChange",
+
+
+    "item.atradseka.boss_core": "純粋なコア",
+    "item.atradseka.heated_core": "熱せられたコア",
+    "item.atradseka.incomplete_core": "未完全なコア",
+
+    "item.atradseka.poppy_deuce": "ポピージュース",
+
+    "item.atradseka.wooden_dagger": "木のダガー",
+    "item.atradseka.stone_dagger": "石のダガー",
+    "item.atradseka.iron_dagger": "鉄のダガー",
+    "item.atradseka.golden_dagger": "金のダガー",
+    "item.atradseka.diamond_dagger": "ダイアモンドのダガー",
+    "item.atradseka.netherite_dagger": "ネザライトのダガー",
+    "item.atradseka.electrite_dagger": "エレクトライトのダガー",
+
+    "item.atradseka.electrite_sword": "エレクトライトの剣",
+
+    "item.atradseka.electrite_pickaxe": "エレクトライトのツルハシ",
+    "item.atradseka.electrite_pickaxe.normal": "Mode:Normal Mode",
+    "item.atradseka.electrite_pickaxe.normal.efficiency": " 12",
+    "item.atradseka.electrite_pickaxe.normal.level": " 5",
+    "item.atradseka.electrite_pickaxe.super": "Mode:Super Mode",
+    "item.atradseka.electrite_pickaxe.super.efficiency": " 15",
+    "item.atradseka.electrite_pickaxe.super.level": " 3",
+    "item.atradseka.electrite_pickaxe.extra": "Mode:Extra Mode",
+    "item.atradseka.electrite_pickaxe.extra.efficiency": " 19",
+    "item.atradseka.electrite_pickaxe.extra.level": " 2",
+    "item.atradseka.electrite_pickaxe.infinity": "Mode:Infinity Mode",
+    "item.atradseka.electrite_pickaxe.infinity.efficiency": " 22",
+    "item.atradseka.electrite_pickaxe.infinity.level": " 1",
+
+    "dsco.atradseka.weapon.addition_damage": "追加ダメージ",
+    "dsco.atradseka.weapon.addition_damage.sekai_magic_lightning": "ライトニングダメージ",
+    
+    "dsco.atradseka.tool.efficiency": " Efficiency",
+    "dsco.atradseka.tool.level": " Level",
+
+    "block.atradseka.solid_coal_block": "強固な石炭ブロック",
+    "block.atradseka.electric_redstone_ore": "エレクトリックレッドストーン鉱石",
+
+        "death.attack.atradsekasekai_Magic_Lightning": "%1$sは%2$sのライトニングマジックダメージでやられた"
+}

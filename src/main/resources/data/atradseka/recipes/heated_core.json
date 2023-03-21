@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "atradseka:incomplete_core"
+  },
+  "result": "atradseka:heated_core",
+  "experience": 0.5,
+  "cookingtime": 300
+}

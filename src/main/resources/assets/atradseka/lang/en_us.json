@@ -1,0 +1,49 @@
+{
+    "itemGroup.atradseka": "Adventure Sekai Mod",
+
+    "key.category.adsekamod": "AdventureSekai Mod",
+    "key.adsekamod.modechange": "ModeChange",
+
+
+    "item.atradseka.boss_core": "Pure Core",
+    "item.atradseka.heated_core": "Heated Core",
+    "item.atradseka.incomplete_core": "Incomplete Core",
+
+    "item.atradseka.poppy_deuce": "Poppy Deuce",
+
+    "item.atradseka.wooden_dagger": "Wooden Dagger",
+    "item.atradseka.stone_dagger": "Stone Dagger",
+    "item.atradseka.iron_dagger": "Iron Dagger",
+    "item.atradseka.golden_dagger": "Golden Dagger",
+    "item.atradseka.diamond_dagger": "Diamond Dagger",
+    "item.atradseka.netherite_dagger": "Netherite Dagger",
+    "item.atradseka.electrite_dagger": "Electrite Dagger",
+
+    "item.atradseka.electrite_sword": "Electrite Sword",
+
+    "item.atradseka.electrite_pickaxe.normal": "Mode:Normal Mode",
+    "item.atradseka.electrite_pickaxe.normal.efficiency": " 12",
+    "item.atradseka.electrite_pickaxe.normal.level": " 5",
+    "item.atradseka.electrite_pickaxe.super": "Mode:Super Mode",
+    "item.atradseka.electrite_pickaxe.super.efficiency": " 15",
+    "item.atradseka.electrite_pickaxe.super.level": " 3",
+    "item.atradseka.electrite_pickaxe.extra": "Mode:Extra Mode",
+    "item.atradseka.electrite_pickaxe.extra.efficiency": " 19",
+    "item.atradseka.electrite_pickaxe.extra.level": " 2",
+    "item.atradseka.electrite_pickaxe.infinity": "Mode:Infinity Mode",
+    "item.atradseka.electrite_pickaxe.infinity.efficiency": " 22",
+    "item.atradseka.electrite_pickaxe.infinity.level": " 1",
+
+
+    "dsco.atradseka.weapon.addition_damage": "Damage",
+    "dsco.atradseka.weapon.addition_damage.sekai_magic_lightning": "LightningDamage",
+
+    "dsco.atradseka.tool.efficiency": " Efficiency",
+    "dsco.atradseka.tool.level": " Level",
+
+
+    "block.atradseka.solid_coal_block": "Solid Coal Block",
+    "block.atradseka.electric_redstone_ore": "ElectricRedstone Ore",
+
+    "death.attack.atradsekasekai_Magic_Lightning": "%1$s was lightning magic by %2$s"
+}
