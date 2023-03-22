@@ -28,7 +28,7 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
+import net.minecraftforge.common.ToolType;
 
 public class ElectritePickaxeItem extends PickaxeItem{
 	
@@ -71,31 +71,48 @@ public class ElectritePickaxeItem extends PickaxeItem{
 
 	}
 	
-	public boolean mineBlock(ItemStack stack, World level, ServerWorld serverlevel, BlockState state, BlockPos pos, PlayerEntity EntityLiving) {
+	public boolean mineBlock(ItemStack stack, World level, BlockState state, BlockPos pos, LivingEntity EntityLiving) {
+		PlayerEntity player = (PlayerEntity) EntityLiving;
+		System.out.println(stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state));
     	Block block = state.getBlock();
     	int a [] = {-1,0,1};
     	for(int ax = 0; ax < 3; ax++) {
     		for(int az = 0; az < 3; az++) {
     			for(int ay = 0; ay < 3; ay++) {
     				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + a[ay], pos.getZ() + a[az]);
-    				if (level.getBlockState(aPos).getBlock().getHarvestTool(state)==block.getHarvestTool(state) && level.getBlockState(aPos).getBlock().canHarvestBlock(state, level, aPos, EntityLiving)==block.canHarvestBlock(state, level, aPos, EntityLiving) && modeInt2(stack)==1) {
+    				if (level.getBlockState(aPos).getBlock().getHarvestTool(state)==block.getHarvestTool(state) && level.getBlockState(aPos).getBlock().getHarvestLevel(state)<= stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state) && modeInt2(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
+    					
     				}
-    			}
-    		}
-    	}
-	    if (modeInt2(stack) == 0) {
-	    	stack.setDamageValue( stack.getDamageValue());
-	    }
-	    if (modeInt2(stack) == 1) {
-	    	stack.setDamageValue( stack.getDamageValue() -10);
-	    	
-	    }
+    			}}}
 	    if (modeInt(stack) == 0) {
-	    	stack.setDamageValue( stack.getDamageValue());
+	    	stack.setDamageValue( stack.getDamageValue() +1);
+		    if (modeInt2(stack) == 1) {
+		    	stack.setDamageValue( stack.getDamageValue() +8);
+
+		    }
 	    }
 	    if (modeInt(stack) == 1) {
-	    	stack.setDamageValue( stack.getDamageValue() -2);
+	    	stack.setDamageValue( stack.getDamageValue() +1);
+		    if (modeInt2(stack) == 1) {
+		    	stack.setDamageValue( stack.getDamageValue() +8);
+
+		    }
+	    }
+	    if (modeInt(stack) == 2) {
+	    	stack.setDamageValue( stack.getDamageValue() +2);
+		    if (modeInt2(stack) == 1) {
+		    	stack.setDamageValue( stack.getDamageValue() +16);
+
+		    }
+	    	
+	    }
+	    if (modeInt(stack) == 3) {
+	    	stack.setDamageValue( stack.getDamageValue() +3);
+		    if (modeInt2(stack) == 1) {
+		    	stack.setDamageValue( stack.getDamageValue() +24);
+
+		    }
 	    }
 		return true;
 	}
@@ -107,7 +124,7 @@ public class ElectritePickaxeItem extends PickaxeItem{
 			
 			stack.setTag(new CompoundNBT());
 		}
-		stack.getTag().getInt("mode");
+		stack.getTag().putInt("mode", modeInt(stack) < 3 ? modeInt(stack) + 1 : 0);
 		
 	}
 	
@@ -117,7 +134,7 @@ public class ElectritePickaxeItem extends PickaxeItem{
 			
 			stack.setTag(new CompoundNBT());
 		}
-		stack.getTag().putInt("mode2", modeInt2(stack) < 1 ? modeInt2(stack) + 1 : 0);
+		stack.getTag().putInt("mode2", modeInt2(stack) == 0 ? modeInt2(stack) + 1 : 0);
 		
 	}
 	
@@ -159,15 +176,15 @@ public class ElectritePickaxeItem extends PickaxeItem{
     	Material material = state.getMaterial();
 	    switch (modeInt(stack)) {
 	    
-   		case 0 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 12.0F;
+   		case 0 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 10.0F;
    		
-   		case 1 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 15.0F;
+   		case 1 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 14.0F;
    		
    		case 2 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 19.0F;
    		
-   		case 3 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 22.0F;
+   		case 3 : return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 24.0F;
 	    }
-        return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 12.0F;
+        return material != Material.METAL && material != Material.HEAVY_METAL && material != Material.STONE ? super.getDestroySpeed(stack,state) : 10.0F;
     }
     
     public String modeName(ItemStack stack) {
@@ -185,7 +202,7 @@ public class ElectritePickaxeItem extends PickaxeItem{
     	
     }
     public String modeName2(ItemStack stack) {
-	    switch (modeInt(stack)) {
+	    switch (modeInt2(stack)) {
 	    
    		case 0 : return "False";
    		
@@ -198,7 +215,7 @@ public class ElectritePickaxeItem extends PickaxeItem{
 
 	public void appendHoverText(ItemStack stack, World level, List<ITextComponent> Tooltip, ITooltipFlag Flag) {
 	   Tooltip.add(new TranslationTextComponent("dsco.atradseka.weapon.addition_damage.sekai_magic_lightning").withStyle(TextFormatting.YELLOW)
-			  .append(new StringTextComponent(" +1.0").withStyle(TextFormatting.DARK_GRAY)));
+			   .append(new StringTextComponent(" +1.0").withStyle(TextFormatting.DARK_GRAY)));
 	   Tooltip.add(new StringTextComponent(" ").withStyle(TextFormatting.WHITE));
 	   Tooltip.add(new TranslationTextComponent(this.getDescriptionId() + modeName(stack)).withStyle(TextFormatting.WHITE));
 	   Tooltip.add(new StringTextComponent("Mode " + modeName2(stack)).withStyle(TextFormatting.WHITE));

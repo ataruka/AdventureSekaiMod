@@ -7,6 +7,7 @@ import com.ataruka.atradsekamod.item.meta.HeatedCoreItem;
 import com.ataruka.atradsekamod.item.meta.IncompleteCoreItem;
 import com.ataruka.atradsekamod.item.ore.ElectricRedstoneItem;
 import com.ataruka.atradsekamod.item.ore.ElectriteIngotItem;
+import com.ataruka.atradsekamod.item.tool.ElectriteAxeItem;
 import com.ataruka.atradsekamod.item.tool.ElectritePickaxeItem;
 import com.ataruka.atradsekamod.item.weapon.DiamondDaggerItem;
 import com.ataruka.atradsekamod.item.weapon.ElectriteDaggerItem;
@@ -47,6 +48,7 @@ public class ItemInit {
  
  public static final RegistryObject<Item> ELECTRITE_SWORD = ITEMS.register("electrite_sword", () -> new ElectriteSwordItem());
  public static final RegistryObject<Item> ELECTRITE_PICKAXE = ITEMS.register("electrite_pickaxe", () -> new ElectritePickaxeItem());
+ public static final RegistryObject<Item> ELECTRITE_AXE = ITEMS.register("electrite_axe", () -> new ElectriteAxeItem());
  
  public static final RegistryObject<Item> SOLID_COAL_BLOCK = ITEMS.register("solid_coal_block",
 			() -> new BlockItem(BlockInit.SOLID_COAL_BLOCK.get(),new Properties().tab(ItemGroupInit.ATRADSEKA_MOD)) {
