@@ -24,7 +24,6 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ToolType;
 
 public class ElectriteAxeItem extends AxeItem{
 
@@ -45,7 +44,7 @@ public class ElectriteAxeItem extends AxeItem{
 		Tooltip.add(new TranslationTextComponent("dsco.atradseka.weapon.addition_damage.sekai_magic_lightning").withStyle(TextFormatting.YELLOW)
 			   .append(new StringTextComponent(" +2.0").withStyle(TextFormatting.DARK_GRAY)));
 		Tooltip.add(new StringTextComponent(" ").withStyle(TextFormatting.DARK_GRAY));
-		Tooltip.add(new StringTextComponent("CutMode " + modeName(Stack)).withStyle(TextFormatting.WHITE));
+		Tooltip.add(new StringTextComponent("CutMode:" + modeName(Stack)).withStyle(TextFormatting.WHITE));
 	}
 	
 	public void inventoryTick(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
@@ -54,7 +53,7 @@ public class ElectriteAxeItem extends AxeItem{
 		if(AdsekaKeyBind.adsekaKey[0].consumeClick() && player.getItemBySlot(EquipmentSlotType.MAINHAND).getItem() == stack.getItem()) {
 			player.setItemInHand(hand, stack);
 			modeChange(stack);
-			player.sendMessage((new StringTextComponent("CutMode " + modeName(stack)).withStyle(TextFormatting.WHITE)), player.getUUID());
+			player.sendMessage((new StringTextComponent("CutMode:" + modeName(stack)).withStyle(TextFormatting.WHITE)), player.getUUID());
 		} 
 	}
 		
@@ -89,14 +88,14 @@ public class ElectriteAxeItem extends AxeItem{
 		
 	public boolean mineBlock(ItemStack stack, World level, BlockState state, BlockPos pos, LivingEntity EntityLiving) {
 		PlayerEntity player = (PlayerEntity) EntityLiving;
-		System.out.println(stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state));
+		System.out.println(stack.getItem());
     	Block block = state.getBlock();
-    	int a [] = {-1,0,1};
-    	for(int ax = 0; ax < 3; ax++) {
-    		for(int az = 0; az < 3; az++) {
-    			for(int ay = 0; ay < 3; ay++) {
-    				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + a[ay], pos.getZ() + a[az]);
-    				if (level.getBlockState(aPos).getBlock().getHarvestTool(state)==block.getHarvestTool(state) && level.getBlockState(aPos).getBlock().getHarvestLevel(state)<= stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state) && modeInt(stack)==1 && !player.isShiftKeyDown()) {
+    	int a [] = {-3,-2,-1,0,1,2,3};
+    	for(int ax = 0; ax < 7; ax++) {
+    		for(int az = 0; az < 7; az++) {
+    			for(int y = 0; y < 50; y++) {
+    				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + y, pos.getZ() + a[az]);
+    				if (level.getBlockState(aPos).getBlock()==block.getBlock() && modeInt(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
     					stack.setDamageValue( stack.getDamageValue() +50);
     				}
