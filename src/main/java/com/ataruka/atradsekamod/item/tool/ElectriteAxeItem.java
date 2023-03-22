@@ -49,13 +49,18 @@ public class ElectriteAxeItem extends AxeItem{
 	
 	public void inventoryTick(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
 		PlayerEntity player = (PlayerEntity) Entity;
-		Hand hand = Hand.MAIN_HAND;
 		if(AdsekaKeyBind.adsekaKey[0].consumeClick() && player.getItemBySlot(EquipmentSlotType.MAINHAND).getItem() == stack.getItem()) {
+			modeChanges(stack, Level, Entity, ItemSlot, IsSelected);
+		} 
+	}
+		public void modeChanges(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
+			PlayerEntity player = (PlayerEntity) Entity;
+			Hand hand = Hand.MAIN_HAND;
+			System.out.println(stack.getItem());
 			player.setItemInHand(hand, stack);
 			modeChange(stack);
 			player.sendMessage((new StringTextComponent("CutMode:" + modeName(stack)).withStyle(TextFormatting.WHITE)), player.getUUID());
-		} 
-	}
+		}
 		
 		public void modeChange(ItemStack stack) {
 			
@@ -87,8 +92,8 @@ public class ElectriteAxeItem extends AxeItem{
 	    }
 		
 	public boolean mineBlock(ItemStack stack, World level, BlockState state, BlockPos pos, LivingEntity EntityLiving) {
+		System.out.print("aaaaa");
 		PlayerEntity player = (PlayerEntity) EntityLiving;
-		System.out.println(stack.getItem());
     	Block block = state.getBlock();
     	int a [] = {-3,-2,-1,0,1,2,3};
     	for(int ax = 0; ax < 7; ax++) {
@@ -97,9 +102,10 @@ public class ElectriteAxeItem extends AxeItem{
     				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + y, pos.getZ() + a[az]);
     				if (level.getBlockState(aPos).getBlock()==block.getBlock() && modeInt(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
-    					stack.setDamageValue( stack.getDamageValue() +50);
+    					stack.setDamageValue( stack.getDamageValue() +1);
     				}
     			}}}
+		stack.setDamageValue( stack.getDamageValue() +1);
     	return true;
 	}
 

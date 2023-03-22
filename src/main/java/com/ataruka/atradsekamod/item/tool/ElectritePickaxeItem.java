@@ -82,41 +82,42 @@ public class ElectritePickaxeItem extends PickaxeItem{
     				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + a[ay], pos.getZ() + a[az]);
     				if (level.getBlockState(aPos).getBlock().getHarvestTool(state)==block.getHarvestTool(state) && level.getBlockState(aPos).getBlock().getHarvestLevel(state)<= stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state) && modeInt2(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
-    					
-    				}
+    				    if (modeInt(stack) == 0) {
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    }
+    				    if (modeInt(stack) == 1) {
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    }
+    				    if (modeInt(stack) == 2) {
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    }
+    				    if (modeInt(stack) == 3) {
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    	stack.setDamageValue( stack.getDamageValue() +1);
+    				    }
     			}}}
 	    if (modeInt(stack) == 0) {
 	    	stack.setDamageValue( stack.getDamageValue() +1);
-		    if (modeInt2(stack) == 1) {
-		    	stack.setDamageValue( stack.getDamageValue() +8);
-
 		    }
 	    }
 	    if (modeInt(stack) == 1) {
 	    	stack.setDamageValue( stack.getDamageValue() +1);
-		    if (modeInt2(stack) == 1) {
-		    	stack.setDamageValue( stack.getDamageValue() +8);
 
-		    }
 	    }
 	    if (modeInt(stack) == 2) {
-	    	stack.setDamageValue( stack.getDamageValue() +2);
-		    if (modeInt2(stack) == 1) {
-		    	stack.setDamageValue( stack.getDamageValue() +16);
-
-		    }
+	    	stack.setDamageValue( stack.getDamageValue() +1);
+	    	stack.setDamageValue( stack.getDamageValue() +1);
 	    	
 	    }
 	    if (modeInt(stack) == 3) {
-	    	stack.setDamageValue( stack.getDamageValue() +3);
-		    if (modeInt2(stack) == 1) {
-		    	stack.setDamageValue( stack.getDamageValue() +24);
-
-		    }
+	    	stack.setDamageValue( stack.getDamageValue() +1);
+	    	stack.setDamageValue( stack.getDamageValue() +1);
+	    	stack.setDamageValue( stack.getDamageValue() +1);
 	    }
 		return true;
 	}
-	
 	
 	public void modeChange(ItemStack stack) {
 		
