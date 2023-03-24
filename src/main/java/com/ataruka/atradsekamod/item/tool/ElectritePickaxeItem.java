@@ -230,7 +230,7 @@ public class ElectritePickaxeItem extends PickaxeItem{
 			   .append(new StringTextComponent(" +1.0").withStyle(TextFormatting.DARK_GRAY)));
 	   Tooltip.add(new StringTextComponent(" ").withStyle(TextFormatting.WHITE));
 	   Tooltip.add(new TranslationTextComponent(this.getDescriptionId() + modeName(stack)).withStyle(TextFormatting.WHITE));
-	   Tooltip.add(new StringTextComponent("Mode " + modeName2(stack)).withStyle(TextFormatting.WHITE));
+	   Tooltip.add(new StringTextComponent("MultiMode:" + modeName2(stack)).withStyle(TextFormatting.WHITE));
 	   Tooltip.add(new TranslationTextComponent("dsco.atradseka.tool.efficiency").withStyle(TextFormatting.GRAY)
 			   .append(new TranslationTextComponent(this.getDescriptionId() + modeName(stack) + ".efficiency").withStyle(TextFormatting.WHITE)));
 	   Tooltip.add(new TranslationTextComponent("dsco.atradseka.tool.level").withStyle(TextFormatting.GRAY)

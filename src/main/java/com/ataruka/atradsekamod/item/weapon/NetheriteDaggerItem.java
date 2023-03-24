@@ -28,6 +28,7 @@ public class NetheriteDaggerItem extends SwordItem{
 		target.invulnerableTime = 0;
 		}
 		target.hurt(DamageSource.mobAttack(attacker), 0.4F);
+		target.invulnerableTime = 10;
 		return super.hurtEnemy(stack, target, attacker);
 	}
 	

@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures":{
+        "layer0":"atradseka:items/weapon/sword/electrite_sword"
+    }
+}

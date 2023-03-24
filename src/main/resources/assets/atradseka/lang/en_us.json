@@ -8,6 +8,8 @@
     "item.atradseka.boss_core": "Pure Core",
     "item.atradseka.heated_core": "Heated Core",
     "item.atradseka.incomplete_core": "Incomplete Core",
+    "item.atradseka.electrite_ingot": "Electrite Ingot",
+    "item.atradseka.electric_redstone": "Electric Redstone",
 
     "item.atradseka.poppy_deuce": "Poppy Deuce",
 
@@ -20,7 +22,7 @@
     "item.atradseka.electrite_dagger": "Electrite Dagger",
 
     "item.atradseka.electrite_sword": "Electrite Sword",
-
+    "item.atradseka.electrite_pickaxe": "Electrite Pickaxe",
     "item.atradseka.electrite_pickaxe.normal": "Mode:Normal Mode",
     "item.atradseka.electrite_pickaxe.normal.efficiency": " 10",
     "item.atradseka.electrite_pickaxe.normal.level": " 5",
@@ -33,7 +35,9 @@
     "item.atradseka.electrite_pickaxe.infinity": "Mode:Infinity Mode",
     "item.atradseka.electrite_pickaxe.infinity.efficiency": " 24",
     "item.atradseka.electrite_pickaxe.infinity.level": " 1",
-
+    "item.atradseka.electrite_axe": "Electrite Axe",
+    "item.atradseka.electrite_shovel": "Electrite Shovel",
+    "item.atradseka.electrite_hoe": "Electrite Hoe",
 
     "dsco.atradseka.weapon.addition_damage": "Damage",
     "dsco.atradseka.weapon.addition_damage.sekai_magic_lightning": "LightningDamage",

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "ENE",
+    "EEE"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "E": {
+      "item": "atradseka:electrite_redstone"
+    }
+  },
+  "result": {
+    "item": "atradseka:electrite_ingot",
+    "count": 1
+  }
+}

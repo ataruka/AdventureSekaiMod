@@ -14,9 +14,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.AxeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShovelItem;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Hand;
@@ -28,11 +28,11 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
-public class ElectriteAxeItem extends AxeItem{
+public class ElectriteShovelItem extends ShovelItem{
 	
 
-	public ElectriteAxeItem() {
-		super(ItemTierInit.ELECTRITE, 3 ,-2.9F , new Properties().tab(ItemGroupInit.ATRADSEKA_MOD).fireResistant());
+	public ElectriteShovelItem() {
+		super(ItemTierInit.ELECTRITE, 0.5F, -3.0F , new Properties().tab(ItemGroupInit.ATRADSEKA_MOD).fireResistant());
 	}
 
 	public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
@@ -40,15 +40,15 @@ public class ElectriteAxeItem extends AxeItem{
 		{
 		target.invulnerableTime = 0;
 		}
-		target.hurt(AdsekaDamageSource.mobSekai_Magic_Lightning(attacker), 2.0F);
+		target.hurt(AdsekaDamageSource.mobSekai_Magic_Lightning(attacker), 1.0F);
 		return super.hurtEnemy(stack, target, attacker);
 	}
 	
 	public void appendHoverText(ItemStack Stack, World Level, List<ITextComponent> Tooltip, ITooltipFlag Flag) {
 		Tooltip.add(new TranslationTextComponent("dsco.atradseka.weapon.addition_damage.sekai_magic_lightning").withStyle(TextFormatting.YELLOW)
-				.append(new StringTextComponent(" +2.0").withStyle(TextFormatting.DARK_GRAY)));
+				.append(new StringTextComponent(" +1.0").withStyle(TextFormatting.DARK_GRAY)));
 		Tooltip.add(new StringTextComponent(" ").withStyle(TextFormatting.DARK_GRAY));
-		Tooltip.add(new StringTextComponent("CutMode:" + modeName(Stack)).withStyle(TextFormatting.WHITE));
+		Tooltip.add(new StringTextComponent("MineMode:" + modeName(Stack)).withStyle(TextFormatting.WHITE));
 	}
 	
 	public void inventoryTick(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
@@ -70,7 +70,7 @@ public class ElectriteAxeItem extends AxeItem{
 			System.out.println(stack.getItem());
 			player.setItemInHand(hand, stack);
 			modeChange(stack);
-			player.sendMessage((new StringTextComponent("CutMode:" + modeName(stack)).withStyle(TextFormatting.WHITE)), player.getUUID());
+			player.sendMessage((new StringTextComponent("MineMode:" + modeName(stack)).withStyle(TextFormatting.WHITE)), player.getUUID());
 		}
 		
 		public void modeChange(ItemStack stack) {
@@ -106,14 +106,14 @@ public class ElectriteAxeItem extends AxeItem{
 		PlayerEntity player = (PlayerEntity) EntityLiving;
     	Block block = state.getBlock();
         Item item = this.getItem();
-    	int a [] = {-3,-2,-1,0,1,2,3};
-    	for(int ax = 0; ax < 7; ax++) {
-    		for(int az = 0; az < 7; az++) {
-    			for(int y = 0; y < 50; y++) {
+    	int a [] = {-2,-1,0,1,2};
+    	for(int ax = 0; ax < 5; ax++) {
+    		for(int az = 0; az < 5; az++) {
+    			for(int y = 0; y < 3; y++) {
     				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + y, pos.getZ() + a[az]);
-    				if (level.getBlockState(aPos).getBlock()==block.getBlock() && block.getHarvestTool(state) == ToolType.AXE &&  modeInt(stack)==1 && !player.isShiftKeyDown()) {
+    				if (level.getBlockState(aPos).getBlock()==block.getBlock() && block.getHarvestTool(state) == ToolType.SHOVEL &&  modeInt(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
-    					stack.setDamageValue( stack.getDamageValue() +1);
+    					stack.setDamageValue(stack.getDamageValue() +1);
     					player.awardStat(Stats.ITEM_USED.get(item));
     					player.awardStat(Stats.BLOCK_MINED.get(level.getBlockState(aPos).getBlock()));
     				}

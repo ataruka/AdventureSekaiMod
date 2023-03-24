@@ -28,6 +28,7 @@ public class IronDaggerItem extends SwordItem{
 		target.invulnerableTime = 0;
 		}
 		target.hurt(DamageSource.mobAttack(attacker), 0.8F);
+		target.invulnerableTime = 10;
 		return super.hurtEnemy(stack, target, attacker);
 	}
 	

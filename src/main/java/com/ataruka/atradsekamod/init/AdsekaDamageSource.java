@@ -19,6 +19,9 @@ public class AdsekaDamageSource {
 	public static DamageSource mobSekai_Magic_Water(LivingEntity Mob) {
 		return new EntityDamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Water", Mob);
 	}
+	public static DamageSource mobSekai_Magic_Grass(LivingEntity Mob) {
+		return new EntityDamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Grass", Mob);
+	}
 	public static DamageSource mobSekai_Magic_Explosion(LivingEntity Mob) {
 		return new EntityDamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Explosion", Mob);
 	}
@@ -38,6 +41,7 @@ public class AdsekaDamageSource {
 	public static final DamageSource SEKAI_MAGIC_LIGHTNING = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Lightning"));
 	public static final DamageSource SEKAI_MAGIC_FIRE = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Fire"));
 	public static final DamageSource SEKAI_MAGIC_WATER = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Water"));
+	public static final DamageSource SEKAI_MAGIC_GRASS = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Grass"));
 	public static final DamageSource SEKAI_MAGIC_EXPLOSION = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Explosion"));
 	public static final DamageSource SEKAI_MAGIC_ABYSS = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Abyss"));
 	public static final DamageSource SEKAI_MAGIC_WIND = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Wind"));

@@ -8,6 +8,8 @@
     "item.atradseka.boss_core": "純粋なコア",
     "item.atradseka.heated_core": "熱せられたコア",
     "item.atradseka.incomplete_core": "未完全なコア",
+    "item.atradseka.electrite_ingot": "エレクトライトインゴット",
+    "item.atradseka.electric_redstone": "エレクトリックレッドストーン",
 
     "item.atradseka.poppy_deuce": "ポピージュース",
 
@@ -20,7 +22,6 @@
     "item.atradseka.electrite_dagger": "エレクトライトのダガー",
 
     "item.atradseka.electrite_sword": "エレクトライトの剣",
-
     "item.atradseka.electrite_pickaxe": "エレクトライトのツルハシ",
     "item.atradseka.electrite_pickaxe.normal": "Mode:Normal Mode",
     "item.atradseka.electrite_pickaxe.normal.efficiency": " 10",
@@ -34,9 +35,13 @@
     "item.atradseka.electrite_pickaxe.infinity": "Mode:Infinity Mode",
     "item.atradseka.electrite_pickaxe.infinity.efficiency": " 24",
     "item.atradseka.electrite_pickaxe.infinity.level": " 1",
+    "item.atradseka.electrite_axe": "エレクトライトの斧",
+    "item.atradseka.electrite_shovel": "エレクトライトのシャベル",
+    "item.atradseka.electrite_hoe": "エレクトライトのクワ",
 
     "dsco.atradseka.weapon.addition_damage": "追加ダメージ",
     "dsco.atradseka.weapon.addition_damage.sekai_magic_lightning": "ライトニングダメージ",
+    "dsco.atradseka.weapon.addition_damage.sekai_magic_fire": "ファイアダメージ",
     
     "dsco.atradseka.tool.efficiency": " Efficiency",
     "dsco.atradseka.tool.level": " Level",
@@ -44,5 +49,9 @@
     "block.atradseka.solid_coal_block": "強固な石炭ブロック",
     "block.atradseka.electric_redstone_ore": "エレクトリックレッドストーン鉱石",
 
-        "death.attack.atradsekasekai_Magic_Lightning": "%1$sは%2$sのライトニングマジックダメージでやられた"
+    "death.attack.atradsekasekai_Magic_Lightning": "%1$sは%2$sの雷魔法ダメージでやられた",
+    "death.attack.atradsekasekai_Magic_fire": "%1$sは%2$sの炎魔法ダメージでやられた",
+    "death.attack.atradsekasekai_Magic_water": "%1$sは%2$sの水魔法ダメージでやられた",
+    "death.attack.atradsekasekai_Magic_wind": "%1$sは%2$sの風魔法ダメージでやられた",
+    "death.attack.atradsekasekai_Magic_grass": "%1$sは%2$sの草魔法ダメージでやられた"
 }
