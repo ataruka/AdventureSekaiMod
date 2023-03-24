@@ -15,8 +15,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.AxeItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
@@ -24,8 +26,10 @@ import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ToolType;
 
 public class ElectriteAxeItem extends AxeItem{
+	
 
 	public ElectriteAxeItem() {
 		super(ItemTierInit.ELECTRITE, 3 ,-2.9F , new Properties().tab(ItemGroupInit.ATRADSEKA_MOD).fireResistant());
@@ -42,16 +46,23 @@ public class ElectriteAxeItem extends AxeItem{
 	
 	public void appendHoverText(ItemStack Stack, World Level, List<ITextComponent> Tooltip, ITooltipFlag Flag) {
 		Tooltip.add(new TranslationTextComponent("dsco.atradseka.weapon.addition_damage.sekai_magic_lightning").withStyle(TextFormatting.YELLOW)
-			   .append(new StringTextComponent(" +2.0").withStyle(TextFormatting.DARK_GRAY)));
+				.append(new StringTextComponent(" +2.0").withStyle(TextFormatting.DARK_GRAY)));
 		Tooltip.add(new StringTextComponent(" ").withStyle(TextFormatting.DARK_GRAY));
 		Tooltip.add(new StringTextComponent("CutMode:" + modeName(Stack)).withStyle(TextFormatting.WHITE));
 	}
 	
 	public void inventoryTick(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
 		PlayerEntity player = (PlayerEntity) Entity;
-		if(AdsekaKeyBind.adsekaKey[0].consumeClick() && player.getItemBySlot(EquipmentSlotType.MAINHAND).getItem() == stack.getItem()) {
+		ItemStack stacks = player.getItemInHand(Hand.MAIN_HAND);
+		Item item = this.getItem();
+		if(AdsekaKeyBind.adsekaKey[0].consumeClick() && player.getItemBySlot(EquipmentSlotType.MAINHAND).getItem() == item) {
 			modeChanges(stack, Level, Entity, ItemSlot, IsSelected);
 		} 
+		if (stacks.getDamageValue() >= stacks.getMaxDamage() && player.getItemBySlot(EquipmentSlotType.MAINHAND).getItem() == item) {
+			player.broadcastBreakEvent(Hand.MAIN_HAND);
+			player.awardStat(Stats.ITEM_BROKEN.get(item));
+			stacks.setCount(0);
+		}
 	}
 		public void modeChanges(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
 			PlayerEntity player = (PlayerEntity) Entity;
@@ -92,17 +103,19 @@ public class ElectriteAxeItem extends AxeItem{
 	    }
 		
 	public boolean mineBlock(ItemStack stack, World level, BlockState state, BlockPos pos, LivingEntity EntityLiving) {
-		System.out.print("aaaaa");
 		PlayerEntity player = (PlayerEntity) EntityLiving;
     	Block block = state.getBlock();
+        Item item = this.getItem();
     	int a [] = {-3,-2,-1,0,1,2,3};
     	for(int ax = 0; ax < 7; ax++) {
     		for(int az = 0; az < 7; az++) {
     			for(int y = 0; y < 50; y++) {
     				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + y, pos.getZ() + a[az]);
-    				if (level.getBlockState(aPos).getBlock()==block.getBlock() && modeInt(stack)==1 && !player.isShiftKeyDown()) {
+    				if (level.getBlockState(aPos).getBlock()==block.getBlock() && block.getHarvestTool(state) == ToolType.AXE &&  modeInt(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
     					stack.setDamageValue( stack.getDamageValue() +1);
+    					player.awardStat(Stats.ITEM_USED.get(item));
+    					player.awardStat(Stats.BLOCK_MINED.get(level.getBlockState(aPos).getBlock()));
     				}
     			}}}
 		stack.setDamageValue( stack.getDamageValue() +1);

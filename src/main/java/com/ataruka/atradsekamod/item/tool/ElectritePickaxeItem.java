@@ -16,10 +16,11 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -63,11 +64,18 @@ public class ElectritePickaxeItem extends PickaxeItem{
 	public void inventoryTick(ItemStack stack, World Level, Entity Entity, int ItemSlot, boolean IsSelected) {
 		PlayerEntity player = (PlayerEntity) Entity;
 		Hand hand = Hand.MAIN_HAND;
-		if(AdsekaKeyBind.adsekaKey[0].consumeClick() && player.getItemBySlot(EquipmentSlotType.MAINHAND).getItem() == stack.getItem()) {
+		Item item = this.getItem();
+		ItemStack stacks = player.getItemInHand(Hand.MAIN_HAND); 
+		if(AdsekaKeyBind.adsekaKey[0].consumeClick() && player.getItemInHand(hand).getItem() == item) {
 			player.setItemInHand(hand, stack);
 			modeChange2(stack);
 			player.sendMessage((new StringTextComponent("MultiMode " + modeName2(stack)).withStyle(TextFormatting.WHITE)), player.getUUID());
 		}  
+		if (stacks.getDamageValue() >= stacks.getMaxDamage() && player.getItemInHand(hand).getItem() == item) {
+			player.broadcastBreakEvent(Hand.MAIN_HAND);
+			player.awardStat(Stats.ITEM_BROKEN.get(item));
+			stacks.setCount(0);
+		}
 
 	}
 	
@@ -75,13 +83,16 @@ public class ElectritePickaxeItem extends PickaxeItem{
 		PlayerEntity player = (PlayerEntity) EntityLiving;
 		System.out.println(stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state));
     	Block block = state.getBlock();
+    	Item item = this.getItem();
     	int a [] = {-1,0,1};
     	for(int ax = 0; ax < 3; ax++) {
     		for(int az = 0; az < 3; az++) {
     			for(int ay = 0; ay < 3; ay++) {
     				BlockPos aPos = new BlockPos(pos.getX() + a[ax],pos.getY() + a[ay], pos.getZ() + a[az]);
-    				if (level.getBlockState(aPos).getBlock().getHarvestTool(state)==block.getHarvestTool(state) && level.getBlockState(aPos).getBlock().getHarvestLevel(state)<= stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state) && modeInt2(stack)==1 && !player.isShiftKeyDown()) {
+    				if (level.getBlockState(aPos).getBlock().getHarvestTool(state)==block.getHarvestTool(state) && block.getHarvestTool(state) == ToolType.PICKAXE && level.getBlockState(aPos).getBlock().getHarvestLevel(state)<= stack.getItem().getHarvestLevel(stack, ToolType.PICKAXE, player, state) && modeInt2(stack)==1 && !player.isShiftKeyDown()) {
     					level.destroyBlock(aPos, true, EntityLiving);
+    					player.awardStat(Stats.ITEM_USED.get(item));
+    					player.awardStat(Stats.BLOCK_MINED.get(level.getBlockState(aPos).getBlock()));
     				    if (modeInt(stack) == 0) {
     				    	stack.setDamageValue( stack.getDamageValue() +1);
     				    }
