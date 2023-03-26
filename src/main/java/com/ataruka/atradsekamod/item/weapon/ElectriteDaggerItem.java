@@ -2,6 +2,7 @@ package com.ataruka.atradsekamod.item.weapon;
 
 import java.util.List;
 
+import com.ataruka.atradsekamod.init.AdsekaDamageSource;
 import com.ataruka.atradsekamod.init.ItemGroupInit;
 import com.ataruka.atradsekamod.init.ItemTierInit;
 
@@ -9,7 +10,6 @@ import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
@@ -27,8 +27,8 @@ public class ElectriteDaggerItem extends SwordItem{
 		{
 		target.invulnerableTime = 0;
 		}
-		target.hurt(DamageSource.mobAttack(attacker), 0.2F);
-		target.invulnerableTime = 10;
+		target.hurt(AdsekaDamageSource.mobSekai_Physics(attacker), 0.2F);
+		target.invulnerableTime = 20;
 		return super.hurtEnemy(stack, target, attacker);
 	}
 	

@@ -48,4 +48,10 @@ public class AdsekaDamageSource {
 	public static final DamageSource SEKAI_PHYSICS = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Physics"));
 	
 	public static final DamageSource SEKAI_REFLECTION = (new DamageSource(AdventureSekaiMod.MOD_ID + "sekai_Magic_Reflection"));
+	
+	private boolean isSekaiMagic;
+	
+	public boolean isSekaiMagic() {
+	      return this.isSekaiMagic;
+	   }
 }
